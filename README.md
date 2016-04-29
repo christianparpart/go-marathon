@@ -1,5 +1,5 @@
-# Go (Golang) Mesos-Marathon API
+# Go (Golang) Mesos-Marathon Client API
 
 ```
-go get github.com/christianparpart/mesos-marathon-api/marathon
+go get github.com/christianparpart/go-marathon/marathon
 ```
