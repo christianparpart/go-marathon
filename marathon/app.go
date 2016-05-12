@@ -98,7 +98,7 @@ type App struct {
 	service               *Service
 	Id                    string
 	Cmd                   *string
-	Args                  *string
+	Args                  []string
 	User                  *string
 	Env                   map[string]string
 	PortDefinitions       []PortDefinition
