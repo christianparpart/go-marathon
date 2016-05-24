@@ -62,7 +62,7 @@ func (service *Service) GetApp(path string) (*App, error) {
 func (service *Service) GetApps() ([]*App, error) {
 	jsonBlob, err := service.HttpGet("/v2/apps?embed=apps.tasks")
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Failed to HTTP GET. %v", err)
 	}
 
 	type jsonResponse struct {
@@ -71,5 +71,5 @@ func (service *Service) GetApps() ([]*App, error) {
 
 	var v jsonResponse
 	err = json.Unmarshal(jsonBlob, &v)
-	return v.Apps, err
+	return v.Apps, fmt.Errorf("Could not unmarshal JSON response. %v", err)
 }
