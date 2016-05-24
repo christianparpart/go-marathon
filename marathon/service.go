@@ -71,5 +71,9 @@ func (service *Service) GetApps() ([]*App, error) {
 
 	var v jsonResponse
 	err = json.Unmarshal(jsonBlob, &v)
-	return v.Apps, fmt.Errorf("Could not unmarshal JSON response. %v", err)
+	if err != nil {
+		return v.Apps, fmt.Errorf("Could not unmarshal JSON response. %v", err)
+	} else {
+		return v.Apps, nil
+	}
 }
