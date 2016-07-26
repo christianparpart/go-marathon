@@ -64,12 +64,17 @@ type HealthStatusChangedEvent struct {
 type DeploymentInfoEvent struct {
 	Plan        DeploymentPlan `json:"plan"`
 	CurrentStep DeploymentStep `json:"currentStep"`
-	Timestamp   time.Time
+	Timestamp   time.Time      `json:"timestamp"`
 }
 
 type DeploymentSuccessEvent struct {
 	Plan      DeploymentPlan `json:"plan"`
-	Timestamp time.Time
+	Timestamp time.Time      `json:"timestamp"`
+}
+
+type DeploymentFailedEvent struct {
+	Plan      DeploymentPlan `json:"plan"`
+	Timestamp time.Time      `json:"timestamp"`
 }
 
 type DeploymentPlan struct {
@@ -85,7 +90,7 @@ type DeploymentTarget struct {
 	Apps         []App         `json:"apps"`
 	Dependencies []interface{} `json:"dependencies"` // TODO
 	Groups       []interface{} `json:"groups"`       // TODO
-	Version      time.Time
+	Version      time.Time     `json:"version"`
 }
 
 type DeploymentStep struct {
