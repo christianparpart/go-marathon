@@ -73,6 +73,7 @@ type DeploymentSuccessEvent struct {
 }
 
 type DeploymentFailedEvent struct {
+	Id        string         `json:"id"`
 	Plan      DeploymentPlan `json:"plan"`
 	Timestamp time.Time      `json:"timestamp"`
 }
