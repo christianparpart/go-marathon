@@ -60,3 +60,39 @@ type HealthStatusChangedEvent struct {
 	TaskId string
 	Alive  bool
 }
+
+type DeploymentInfoEvent struct {
+	Plan        DeploymentPlan `json:"plan"`
+	CurrentStep DeploymentStep `json:"currentStep"`
+	Timestamp   time.Time
+}
+
+type DeploymentSuccessEvent struct {
+	Plan      DeploymentPlan `json:"plan"`
+	Timestamp time.Time
+}
+
+type DeploymentPlan struct {
+	Id       string           `json:"id"`
+	Original DeploymentTarget `json:"original"`
+	Target   DeploymentTarget `json:"target"`
+	Steps    []DeploymentStep `json:"steps"`
+	Version  time.Time        `json:"version"`
+}
+
+type DeploymentTarget struct {
+	Id           string        `json:"id"`
+	Apps         []App         `json:"apps"`
+	Dependencies []interface{} `json:"dependencies"` // TODO
+	Groups       []interface{} `json:"groups"`       // TODO
+	Version      time.Time
+}
+
+type DeploymentStep struct {
+	Actions []DeploymentAction `json:"actions"`
+}
+
+type DeploymentAction struct {
+	Type string `json:"type"`
+	App  string `json:"app"`
+}
